@@ -6,7 +6,7 @@ import os.path, sqlite3
 #from user_acc.atomicid import ObjId
 #from user_acc import Perm, UserPermissions
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../templates')
 
 def mobile(func):
    def func_wrapper(*args, **kwargs):
