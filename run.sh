@@ -7,11 +7,8 @@ num_workers=2
 ip=127.0.0.1
 port=4222
 
-ssl_data1=--certfile=/etc/letsencrypt/live/familyape.com/fullchain.pem
-ssl_data2=--keyfile=/etc/letsencrypt/live/familyape.com/privkey.pem
-
 #cd src/back;
-gunicorn --pythonpath src/back serv:app --workers=$num_workers -b $ip:$port $ssl_data1 $ssl_data2 &
+gunicorn --pythonpath src/back serv:app --workers=$num_workers -b $ip:$port &
 
 latest=$!
 echo $latest > $pid_dir/guni.pid
