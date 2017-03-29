@@ -32,7 +32,6 @@ app.secret_key = conf['SECRET_KEY']
 APP_ROOT = conf['APP_ROOT']
 DOMAIN = conf['DOMAIN']
 STATIC_NGINX = conf['STATIC_NGINX']
-ACCOUNT_DB_PATH = conf['ACCOUNT_DB_PATH']
 
 def get_conf():
    return {

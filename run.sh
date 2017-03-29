@@ -5,7 +5,7 @@ mkdir -p $pid_dir
 
 num_workers=2
 ip=127.0.0.1
-port=4222
+port=4829
 
 #cd src/back;
 gunicorn --pythonpath src/back serv:app --workers=$num_workers -b $ip:$port &
@@ -16,7 +16,7 @@ echo "starting guni proc: $latest"
 
 ####
 
-./watchers/pywatch.py ./src/sass scsc ./watchers/watchsass.py -d &
+./watchers/pywatch.py ./src/sass scss ./watchers/watchsass.py -d &
 latest=$!
 echo $latest > $pid_dir/sasswatch.pid
 

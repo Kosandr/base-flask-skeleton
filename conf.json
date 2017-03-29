@@ -1,1 +1,1 @@
-{"DOMAIN": "https://familyape.com/dbtnext/", "APP_ROOT": "/dbtnext/", "STATIC_NGINX": "https://familyape.com/dbtnext/static-nginx", "SECRET_KEY": ""}
+{"DOMAIN": "https://familyape.com/test/", "APP_ROOT": "/test/", "STATIC_NGINX": "https://familyape.com/dbtnext/static-nginx", "SECRET_KEY": ""}

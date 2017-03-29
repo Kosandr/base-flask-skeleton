@@ -18,7 +18,7 @@ def get_files(path='.'):
    return files_lst
 
 def is_sass(name):
-   return name[-5:] == '.scsc'
+   return name[-5:] == '.scsc' or name[-5:] == '.scss'
 
 file_paths = filter(is_sass, get_files(sass_src_path))
 
