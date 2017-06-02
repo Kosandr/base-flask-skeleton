@@ -26,7 +26,7 @@ echo $latest > $pid_dir/jsxwatch.pid
 
 
 #./watchers/pywatch.py ./src/back "py|html" "kill -HUP $latest" -d
-./watchers/pywatch.py ./src/back "py|html" "kill -HUP `cat $pid_dir/guni.pid`" -d
+./watchers/pywatch.py ./src/back "py|html" "kill -HUP `cat $pid_dir/guni.pid`" -d &
 ./watchers/pywatch.py ./src/templates "py|html" "kill -HUP `cat $pid_dir/guni.pid`" -d
 
 kill -9 `cat $pid_dir/jsxwatch.pid` `cat $pid_dir/sasswatch.pid`
