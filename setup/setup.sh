@@ -2,7 +2,7 @@
 
 apt install nginx-extras
 
-pip3 install gunicorn Flask
+pip3 install gunicorn Flask libsass
 pip3 install user_agents
 
 
