@@ -1,18 +1,27 @@
+{% set cache_flush = conf.cache_flush %}
+{% set root = conf.root_path %}
+{% set assets = conf.static_path %}
+{% set is_mobile = conf.is_mobile %}
+{% set autogen_path = assets + '/autogen/' %}
+<!DOCTYPE html>
 <html>
 <head>
-   <script src="https://unpkg.com/react@15.3.2/dist/react-with-addons.js"></script>
-   <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+   {% include "includes.html" %}
 
-   <script src='{{ conf.static_path }}/autogen/index.js'></script>
+   <script src='{{autogen_path}}/index.js{{cache_flush}}'></script>
+   <script src='{{autogen_path}}/index.css{{cache_flush}}'></script>
 
 </head>
 <body>
+   {% include "header.html" %}
 
    <div id='surveyMountPoint'></div>
 
    <script>
       initSurveyViewer();
    </script>
+
+   {% include "footer.html" %}
 
 </body>
 </html>

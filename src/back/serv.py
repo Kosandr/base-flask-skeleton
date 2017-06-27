@@ -6,21 +6,10 @@ import os.path, sqlite3
 #from user_acc.atomicid import ObjId
 #from user_acc import Perm, UserPermissions
 
+import helpers
+from helpers import mobile, is_mobile_agent
+
 app = Flask(__name__, template_folder='../templates')
-
-def mobile(func):
-   def func_wrapper(*args, **kwargs):
-      agent_str = request.headers.get('User-Agent')
-      agent_parsed = user_agents.parse(agent_str)
-      is_mobile = agent_parsed.is_mobile
-      return func(is_mobile=agent_parsed.is_mobile, *args, **kwargs)
-   return func_wrapper
-
-def read_config():
-   with open('conf.json', 'r') as f:
-      conf_str = f.read()
-      json_conf = json.loads(conf_str)
-      return json_conf
 
 conf = read_config()
 
@@ -32,11 +21,27 @@ app.secret_key = conf['SECRET_KEY']
 APP_ROOT = conf['APP_ROOT']
 DOMAIN = conf['DOMAIN']
 STATIC_NGINX = conf['STATIC_NGINX']
+SITE_NAME = conf['SITE_NAME']
 
 def get_conf():
+   from utiltools import shellutils
+
+   need_flush_cache = True
+   cache_flush_str = ''
+   if need_flush_cache:
+      random = shellutils.rand_str(3)
+      cache_flush_str = '?x=' + random
+
+   site_root_path = DOMAIN + APP_ROOT
+
    return {
-      'root_path' : APP_ROOT,
-      'static_path' : STATIC_NGINX
+      'root_path' : site_root_path,
+      'static_path' : STATIC_NGINX,
+      'random' : shellutils.rand_str(3),
+      'cache_flush' : cache_flush_str,
+      'is_mobile' : is_mobile_agent(),
+      'site_name' : SITE_NAME,
+      'active_page' : activePage
    }
 
 @app.route(APP_ROOT, strict_slashes=False)
