@@ -13,5 +13,7 @@
 
 
 
-kill `lsof . | grep pywatch | awk '{ print $2}' | tr '\n' ' ' `
-kill `lsof . | grep gunicorn | awk '{ print $2}' | tr '\n' ' ' `
+#kill `lsof . | grep pywatch | awk '{ print $2}' | tr '\n' ' ' `
+#kill `lsof . | grep gunicorn | awk '{ print $2}' | tr '\n' ' ' `
+kill `lsof $1 | grep pywatch | awk '{ print $2}' | tr '\n' ' ' `
+kill `lsof $1 | grep gunicorn | awk '{ print $2}' | tr '\n' ' ' `
