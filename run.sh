@@ -16,11 +16,11 @@ echo "starting guni proc: $latest"
 
 ####
 
-./watchers/pywatch.py ./src/sass scss ./watchers/watchsass.py -d &
+pywatch.py ./src/sass scss ./watchers/watchsass.py -d &
 latest=$!
 echo $latest > $pid_dir/sasswatch.pid
 
-./watchers/pywatch.py ./src/jsx jsx "./watchers/watchjsx.py %s" -p &
+pywatch.py ./src/jsx jsx "./watchers/watchjsx.py %s" -p &
 latest=$!
 echo $latest > $pid_dir/jsxwatch.pid
 
