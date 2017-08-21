@@ -7,7 +7,7 @@ import os.path, sqlite3
 #from user_acc import Perm, UserPermissions
 
 import helpers
-from helpers import mobile, is_mobile_agent
+from helpers import mobile, is_mobile_agent, read_config
 
 app = Flask(__name__, template_folder='../templates')
 
