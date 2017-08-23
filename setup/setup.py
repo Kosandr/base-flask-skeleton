@@ -56,11 +56,18 @@ def check_and_install_docker():
 def main():
    check_and_install_docker()
 
+   build_flags = '--no-cache'
+   build_flags = ''
+
+   run_bash('docker build %s -f dock/Dockerfile dock' % (build_flags,), False)
+   run_bash('docker run -t -i 2a67a309c4bb /bin/bash', False)
+
+
 
 if __name__ == '__main__':
    main()
 
-   run_bash('docker build dock', False)
+
 
 
 def install_deps():
@@ -68,13 +75,13 @@ def install_deps():
    def base_deps():
       cmd = '''
          sudo apt -y install sqlite3
-         pip3 install Flask
+         pip3 install Flask gunicorn
       '''
       run_bash(cmd, get_out=False)
 
    def flask_session_deps():
       cmd = '''
-         sudo apt install -y redis-server
+         sudo apt -y install redis-server
          pip3 install redis Flask-Session
       '''
       run_bash(cmd, get_out=False)
