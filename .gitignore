@@ -4,3 +4,4 @@ static-nginx/autogen
 tmp/
 *.swp
 __pycache__
+*.pyc

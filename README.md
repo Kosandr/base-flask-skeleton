@@ -2,6 +2,6 @@
 Basic website setup with Flask, React and Sass
 
 
-pip install Flask-Session
+pip3 install Flask-Session
 sudo pip install redis
 apt install redis-server
