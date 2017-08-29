@@ -61,24 +61,22 @@ def check_and_install_docker():
 
 
 def write_img_buildid(name):
-   with open('latest_docker_img', 'w') as f:
-      f.write(name)
+   sh.shellu('set', 'kosan_bfske_latest_docker_img_build_id', name)
+
 
 def get_img_buildid():
-   with open('latest_docker_img', 'r') as f:
-      return f.read()
-   return None
+   return str(sh.shellu('get', 'kosan_bfske_latest_docker_img_build_id')).strip()
 
 
 def main():
    check_and_install_docker()
 
    build_flags = '--no-cache'
-   build_flags = ''
+   build_flags = '' #comment this line to re-build from scratch
 
    cmd = 'docker build %s -f dock/Dockerfile dock' % (build_flags,)
 
-   ret = run_bash(cmd, True)
+   ret = run_bash(cmd, True) #set to false to look at output as it goes
 
    print(ret)
 
@@ -89,14 +87,19 @@ def main():
    else:
       build_id = splitted[1]
       #build_id = 'a6072e47be06'
-      write_img_name(build_id)
+      write_img_buildid(build_id)
       print('running image: %s' % (build_id,))
 
       run_bash('docker run -t -i %s /bin/bash' % (build_id,), False)
 
 
-def run(build_id, shared_drive_path):
-   run_bash('docker run -t -i %s
+def run(build_id, shared_drive_path, cmd):
+   volume_args = '-v %s:/sec' % (shared_drive_path,)
+
+   cmd = 'docker run -t %s %s %s' % (volume_args, build_id, cmd)
+
+   run_bash(cmd, False)
+
 
 if __name__ == '__main__':
    main()
