@@ -14,7 +14,8 @@ if len(sys.argv) == 2:
    shared_drive_path = sys.argv[1]
 
 
-run_cmd = '/root/orgs/Kosandr/base-flask-skeleton/pull-and-run.sh'
+#run_cmd = '/root/orgs/Kosandr/base-flask-skeleton/pull-and-run.sh'
+run_cmd = '/bin/bash'
 
 print('running app with shared drive:', shared_drive_path)
 

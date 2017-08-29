@@ -6,4 +6,4 @@ cd $DIR
 echo "pull-and-run.sh: $DIR"
 
 git pull origin master
-./run.sh
+./run.sh . 4247

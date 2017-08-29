@@ -96,7 +96,7 @@ def main():
 def run(build_id, shared_drive_path, cmd):
    volume_args = '-v %s:/sec' % (shared_drive_path,)
 
-   cmd = 'docker run -t %s %s %s' % (volume_args, build_id, cmd)
+   cmd = 'docker run -t -i %s %s %s' % (volume_args, build_id, cmd)
 
    run_bash(cmd, False)
 
@@ -112,7 +112,7 @@ def install_deps():
    def base_deps():
       cmd = '''
          sudo apt -y install sqlite3
-         pip3 install Flask gunicorn
+         pip3 install Flask gunicorn user_agents
       '''
       run_bash(cmd, get_out=False)
 
