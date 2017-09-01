@@ -76,7 +76,8 @@ def main():
 
    cmd = 'docker build %s -f dock/Dockerfile dock' % (build_flags,)
 
-   ret = run_bash(cmd, True) #set to false to look at output as it goes
+   hide_out = True #set to false to look at output as it goes
+   ret = run_bash(cmd, hide_out)
 
    print(ret)
 
@@ -96,9 +97,10 @@ def main():
 def run(build_id, shared_drive_path, cmd):
    volume_args = '-v %s:/sec' % (shared_drive_path,)
 
-   cmd = 'docker run -t -i %s %s %s' % (volume_args, build_id, cmd)
+   ports_args = '-p 4247:4247'
+   full_cmd = 'docker run -t -i %s %s %s %s' % (volume_args, ports_args, build_id, cmd)
 
-   run_bash(cmd, False)
+   run_bash(full_cmd, False)
 
 
 if __name__ == '__main__':
@@ -112,7 +114,7 @@ def install_deps():
    def base_deps():
       cmd = '''
          sudo apt -y install sqlite3
-         pip3 install Flask gunicorn user_agents
+         sudo pip3 install Flask gunicorn user_agents
       '''
       run_bash(cmd, get_out=False)
 
