@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#~/orgs/Kosandr/base-flask-skeleton/run.sh/sec/sites/<flask-project>/ 5016
+#~/orgs/Kosandr/base-flask-skeleton/run.sh /sec/sites/<flask-project>/ 5016
 #./run.sh . port
 
 
