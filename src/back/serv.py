@@ -9,6 +9,8 @@ import os.path, sqlite3
 import helpers
 from helpers import mobile, is_mobile_agent, read_config
 
+
+
 app = Flask(__name__, template_folder='../templates')
 
 conf = read_config()
@@ -43,6 +45,7 @@ def get_conf():
       'site_name' : SITE_NAME,
       'active_page' : activePage
    }
+
 
 @app.route(APP_ROOT, strict_slashes=False)
 @app.route(APP_ROOT + 'index', strict_slashes=False)

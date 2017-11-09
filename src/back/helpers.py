@@ -16,3 +16,4 @@ def read_config():
       conf_str = f.read()
       json_conf = json.loads(conf_str)
    return json_conf
+

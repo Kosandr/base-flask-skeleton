@@ -62,7 +62,7 @@ def check_and_install_docker():
 
 def write_img_buildid(name):
    sh.shellu('set', 'kosan_bfske_latest_docker_img_build_id', name)
-
+   #pass
 
 def get_img_buildid():
    return str(sh.shellu('get', 'kosan_bfske_latest_docker_img_build_id')).strip()
@@ -102,10 +102,10 @@ def run(build_id, shared_drive_path, cmd):
 
    run_bash(full_cmd, False)
 
+   #pass
 
 if __name__ == '__main__':
    main()
-
 
 
 
@@ -127,8 +127,6 @@ def install_deps():
 
    base_deps()
    flask_session_deps()
-
-
 
 
 
