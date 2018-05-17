@@ -23,11 +23,17 @@ echo "starting guni proc: $latest"
 
 ####
 
-pywatch $loc/src/sass scss $loc/watchers/watchsass.py -d &
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+echo "KK: $DIR"
+
+#pywatch $loc/src/sass scss $loc/watchers/watchsass.py -d &
+pywatch $loc/src/sass scss $DIR/watchers/watchsass.py -d &
 latest=$!
 echo $latest > $pid_dir/sasswatch.pid
 
-pywatch $loc/src/jsx jsx "$loc/watchers/watchjsx.py %s" -p &
+#pywatch $loc/src/jsx jsx "$loc/watchers/watchjsx.py %s" -p &
+pywatch $loc/src/jsx jsx "$DIR/watchers/watchjsx.py %s" -p &
 latest=$!
 echo $latest > $pid_dir/jsxwatch.pid
 

@@ -14,6 +14,9 @@ src_path = './src/jsx/'
 #out_dir = './sass/output'
 out_dir = './static-nginx/autogen'
 
+
+os.system('mkdir -p %s' % (out_dir,))
+
 def get_files(path='.'):
    raw_files = str(sh.ls(path))
    raw_files = raw_files.replace('\t', ' ').replace('\n', ' ')
@@ -48,7 +51,7 @@ def compile_fname(fname):
    if len(sys.argv) == 1:
       out_path = out_dir + '/' + fname_out
 
-   os.system('rm %s %s.bundle.js' % (out_path, out_path_base))
+   os.system('rm -f %s %s.bundle.js' % (out_path, out_path_base))
 
    cmd = 'babel --plugins transform-react-jsx'
    cmd = '%s %s >%s' % (cmd, in_path, out_path)
