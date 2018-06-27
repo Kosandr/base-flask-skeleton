@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
 NEED_OLD_BROWSER = False
-NEED_BUNDLE = False #to package up jscloak
+#NEED_BUNDLE = False #to package up jscloak
+NEED_BUNDLE = True
 
 #sudo pip3 install libsass sh
 #run from root of project:

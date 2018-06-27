@@ -15,7 +15,7 @@ ip=127.0.0.1
 port=$2
 
 #cd src/back;
-gunicorn --pythonpath $loc/src/back serv:app --workers=$num_workers -b $ip:$port &
+gunicorn -k flask_sockets.worker --pythonpath $loc/src/back serv:app --workers=$num_workers -b $ip:$port &
 
 latest=$!
 echo $latest > $pid_dir/guni.pid
